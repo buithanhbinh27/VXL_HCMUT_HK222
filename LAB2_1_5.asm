@@ -7,9 +7,9 @@
 
 
 ; Replace with your application code
-		.EQU		P_OUT=4					;g·n k˝ hi?u P_OUT=5
-		.EQU		TP_H=-31				;gi· tr? ??t tr??c m?c 1
-		.EQU		TP_L=-93				;gi· tr? ??t tr??c m?c 0
+		.EQU		P_OUT=4					;g√°n k√Ω hi?u P_OUT=5
+		.EQU		TP_H=-31				;gi√° tr? ??t tr??c m?c 1
+		.EQU		TP_L=-93				;gi√° tr? ??t tr??c m?c 0
 		.ORG		0
 		RJMP		MAIN
 		.ORG		0X40
@@ -37,16 +37,16 @@ START:	SBI			PORTB,		P_OUT		;output=1 1MC
 		LDI			R17,		TP_L		;n?p TCNT0=TP_L 1MC
 		RCALL		DELAY_T0				;3MC
 
-		RJMP		START					;l?p vÚng l?i 2MC
+		RJMP		START					;l?p v√≤ng l?i 2MC
 ;------------------------------------------------------------
 DELAY_T0: 
 		OUT			TCNT0,		R17			;1MC
 		LDI			R17,		0X03		;Timer0 ch?y, N=64 1MC
 		OUT			TCCR0B,		R17			;1MC
 WAIT:	IN			R17,		TIFR0		;??c c? TOV0 1MC
-		SBRS		R17,		TOV0		;c? TOV0=1 tho·t 2/1MC
+		SBRS		R17,		TOV0		;c? TOV0=1 tho√°t 2/1MC
 		RJMP		WAIT					;ch? c? TOV0=1 2MC
-		OUT			TIFR0,		R17			;xÛa c? TOV0 1MC
+		OUT			TIFR0,		R17			;x√≥a c? TOV0 1MC
 		LDI			R17,		0X00		;d?ng Timer0 1MC
 		OUT			TCCR0B,		R17			;1MC
 		RET									;4MC
