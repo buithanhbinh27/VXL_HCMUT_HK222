@@ -7,10 +7,10 @@
 
 
 ; Replace with your application code
-		.EQU		LED_0 =		0XC0		;m„ led 7 ?oan s? 0
-		.EQU		LED_1 =		0XF9		;m„ led 7 ?oan s? 1
-		.EQU		LED_2 =		0XA4		;m„ led 7 ?oan s? 2
-		.EQU		LED_3 =		0XB0		;m„ led 7 ?oan s? 3
+		.EQU		LED_0 =		0XC0		;m√£ led 7 ?oan s? 0
+		.EQU		LED_1 =		0XF9		;m√£ led 7 ?oan s? 1
+		.EQU		LED_2 =		0XA4		;m√£ led 7 ?oan s? 2
+		.EQU		LED_3 =		0XB0		;m√£ led 7 ?oan s? 3
 		
 		.ORG		0
 		RJMP		MAIN
