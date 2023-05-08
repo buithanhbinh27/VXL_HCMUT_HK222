@@ -238,12 +238,12 @@ WAIT_0:			LDI			R16,		50			;s? l?n nh?n d?ng SW nh?n
 BACK1:			SBIC		PIND,		0			;g?i ctc nh?n d?ng SW
 				RJMP		WAIT_0
 				DEC			R16						;??m s? l?n nh?n d?ng SW
-				BRNE		BACK1					;l?p vòng cho ?? s? l?n ??m
+				BRNE		BACK1					;l?p vÃ²ng cho ?? s? l?n ??m
 WAIT_1:			LDI			R16,		50			;s? l?n nh?n d?ng SW nh
 BACK2:			SBIS		PIND,		0					;g?i ctc nh?n d?ng SW
 				RJMP		WAIT_1
 				DEC			R16						;??m s? l?n nh?n d?ng SW
-				BRNE		BACK2					;l?p vòng cho ?? s? l			
+				BRNE		BACK2					;l?p vÃ²ng cho ?? s? l			
 				RET
 
 				.ORG	0X0200
