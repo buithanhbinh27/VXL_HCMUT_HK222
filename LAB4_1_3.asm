@@ -2,7 +2,7 @@
 ; LAB4_1_1.asm
 ; 100hZ -> N = 8 -> 1 CK = 8000 MC 
 .EQU	P_OUT	=0
-.EQU	TF		= 4000 ;TF=gi· tr? ??t tr??c
+.EQU	TF		= 4000 ;TF=gi√° tr? ??t tr??c
 .EQU		DATA_0			=	7
 .EQU		DATA_1			=	11
 .EQU		DATA_2			=	13
