@@ -17,10 +17,10 @@ LDI			R16,		103
 STS			UBRR0L,		R16
 LDI			R16,		(1<<U2X1) ;x2 BR
 STS			UCSR0A,		R16
-LDI			R16,		(1<<TXEN0)|(1<<RXEN0);cho phép phát,8 bit data
+LDI			R16,		(1<<TXEN0)|(1<<RXEN0);cho phÃ©p phÃ¡t,8 bit data
 STS			UCSR0B,		R16
 LDI			R16,		(3<<UCSZ00); UART 8 bit,1 stop bit, 
-STS			UCSR0C,		R16 ; không parity
+STS			UCSR0C,		R16 ; khÃ´ng parity
 
 
 START:
@@ -33,9 +33,9 @@ RJMP		START
 ;-----------------------------------
 TRANS_CHR: 
 LDS			R16,		UCSR0A ;??c c? UDRE0
-SBRS		R16,		UDRE0 ;UDRE0=1 s?n sàng phát
+SBRS		R16,		UDRE0 ;UDRE0=1 s?n sÃ ng phÃ¡t
 RJMP		TRANS_CHR ;ch? c? UDRE0=1
-STS			UDR0,		R17 ;phát data c?t trong R17
+STS			UDR0,		R17 ;phÃ¡t data c?t trong R17
 RET
 
 REC_CHR:
