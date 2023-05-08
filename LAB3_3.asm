@@ -35,10 +35,10 @@ LDI			R16,		103
 STS			UBRR1L,		R16
 LDI			R16,		(1<<U2X1) ;x2 BR
 STS			UCSR1A,		R16
-LDI			R16,		(1<<RXEN1)|(1<<TXEN1);cho phép phát,8 bit data
+LDI			R16,		(1<<RXEN1)|(1<<TXEN1);cho phÃ©p phÃ¡t,8 bit data
 STS			UCSR1B,		R16
 LDI			R16,		(3<<UCSZ00); UART 8 bit,1 stop bit, 
-STS			UCSR1C,		R16 ; không parity
+STS			UCSR1C,		R16 ; khÃ´ng parity
 ;________________________________________________________________
 //kHAI BAO CHE DO SPI
 LDI			R16,		(1<<SS)|(1<<MOSI)|(1<<SCK)|(1<<0)|(1<<1)
@@ -46,8 +46,8 @@ LDI			R16,		(1<<SS)|(1<<MOSI)|(1<<SCK)|(1<<0)|(1<<1)
 OUT			DDRB,		R16
 SBI			PORTB,		SS ;d?ng truy?n SPI
 LDI			R16,		(1<<SPE0)|(1<<MSTR0)
-;SPI Master,MSB tr??c,l?y m?u c?nh lên c?nh tr??c, 
-;fck=500Khz,cho phép SPI
+;SPI Master,MSB tr??c,l?y m?u c?nh lÃªn c?nh tr??c, 
+;fck=500Khz,cho phÃ©p SPI
 OUT			SPCR0,		R16
 
 ;________________________________________________________________
@@ -71,9 +71,9 @@ RET
 ;-----------------------------------
 TRANS_CHR: 
 LDS			R16,		UCSR1A ;??c c? UDRE0
-SBRS		R16,		UDRE1 ;UDRE0=1 s?n sàng phát
+SBRS		R16,		UDRE1 ;UDRE0=1 s?n sÃ ng phÃ¡t
 RJMP		TRANS_CHR ;ch? c? UDRE0=1
-STS			UDR1,		R17 ;phát data c?t trong R17
+STS			UDR1,		R17 ;phÃ¡t data c?t trong R17
 RET
 ;-----------------------------------
 
