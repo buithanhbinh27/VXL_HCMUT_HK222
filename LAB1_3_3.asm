@@ -197,81 +197,81 @@ L1:
 		RET
 ;__________________________________________________
 ;------------------------------------------
-;HEX_ASC CHUY?N T? MÃ HEX SANG MÃ ASCII
-;INPUT R17=MÃ HEX,OUTPUT R18=MÃ ASCII
+;HEX_ASC CHUY?N T? MÃƒ HEX SANG MÃƒ ASCII
+;INPUT R17=MÃƒ HEX,OUTPUT R18=MÃƒ ASCII
 ;------------------------------------------
 HEX_ASC:
-		CPI			R17,			0X0A ;KÝ T? <$0A?
+		CPI			R17,			0X0A ;KÃ T? <$0A?
 		BRCS		NUM						;C=1 NH? H?N
-		LDI			R18,			0X37 ;KÝ T? CH?
+		LDI			R18,			0X37 ;KÃ T? CH?
 		RJMP		CHAR
 NUM: 
-		LDI			R18,			0X30 ;KÝ T? S?
+		LDI			R18,			0X30 ;KÃ T? S?
 CHAR: 
-		ADD			R18,			R17 ;C?NG THÊM $30
+		ADD			R18,			R17 ;C?NG THÃŠM $30
 		RET	
 ;------------------------------------------
-;KEY_RD ??C TR?NG THÁI PHÍM
-;CH?NG RUNG PHÍM KHI NH?N/NH? 50 L?N
-;S? D?NG GET_KEY16 NH?N D?NG PHÍM NH?N
-;CH? THOÁT KHI CÓ PHÍM NH?N!!!
+;KEY_RD ??C TR?NG THÃI PHÃM
+;CH?NG RUNG PHÃM KHI NH?N/NH? 50 L?N
+;S? D?NG GET_KEY16 NH?N D?NG PHÃM NH?N
+;CH? THOÃT KHI CÃ“ PHÃM NH?N!!!
 ;-------------------------------------------
 KEY_RD: 
-		LDI			R16,			50 ;S? L?N NH?N D?NG PHÍM NH?N
+		LDI			R16,			50 ;S? L?N NH?N D?NG PHÃM NH?N
 BACK1: 
-		RCALL		GET_KEY16				;G?I CTC NH?N D?NG PHÍM
-		BRCC		KEY_RD					;C=0 PHÍM CH?A NH?N L?P L?I
-		DEC			R16					;??M S? L?N NH?N D?NG PHÍM
-		BRNE		BACK1					;L?P VÒNG CHO ?? S? L?N ??M
-		PUSH		R17						;XÁC NH?N PHÍM NH?N,C?T MÃ PHÍM
+		RCALL		GET_KEY16				;G?I CTC NH?N D?NG PHÃM
+		BRCC		KEY_RD					;C=0 PHÃM CH?A NH?N L?P L?I
+		DEC			R16					;??M S? L?N NH?N D?NG PHÃM
+		BRNE		BACK1					;L?P VÃ’NG CHO ?? S? L?N ??M
+		PUSH		R17						;XÃC NH?N PHÃM NH?N,C?T MÃƒ PHÃM
 WAIT_1: 
-		LDI			R16,			50 ;S? L?N NH?N D?NG PHÍM NH?
+		LDI			R16,			50 ;S? L?N NH?N D?NG PHÃM NH?
 BACK2: 
-		RCALL		GET_KEY16			;G?I CTC NH?N D?NG PHÍM
-		BRCS		WAIT_1					;C=1 PHÍM CH?A NH?
-		DEC			R16						;??M S? L?N NH?N D?NG PHÍM
-		BRNE		BACK2				;L?P VÒNG CHO ?? S? L?N ??M
-		POP			R17					;XÁC NH?N PHÍM NH? L?Y L?I MÃ PHÍM
+		RCALL		GET_KEY16			;G?I CTC NH?N D?NG PHÃM
+		BRCS		WAIT_1					;C=1 PHÃM CH?A NH?
+		DEC			R16						;??M S? L?N NH?N D?NG PHÃM
+		BRNE		BACK2				;L?P VÃ’NG CHO ?? S? L?N ??M
+		POP			R17					;XÃC NH?N PHÃM NH? L?Y L?I MÃƒ PHÃM
 		RET
 ;-----------------------------------------
-;GET_KEY16 ??C TR?NG THÁI CÁC PHÍM,
-;TR? V? R17= MÃ PHÍM VÀ C=1 N?U CÓ PHÍM NH?N
-;TR? V? C=0 N?U PHÍM CH?A NH?N
+;GET_KEY16 ??C TR?NG THÃI CÃC PHÃM,
+;TR? V? R17= MÃƒ PHÃM VÃ€ C=1 N?U CÃ“ PHÃM NH?N
+;TR? V? C=0 N?U PHÃM CH?A NH?N
 ;------------------------------------------
 GET_KEY16:
-		LDI			R17,			4 ;R17 ??M S? L?N QUÉT C?T
-		LDI			R20,			0XFE ;B?T ??U QUÉT C?T 0
+		LDI			R17,			4 ;R17 ??M S? L?N QUÃ‰T C?T
+		LDI			R20,			0XFE ;B?T ??U QUÃ‰T C?T 0
 SCAN_COL:
 		OUT			INPUT_PORT,		R20 ;
-		IN			R19,			INPUT_PIN ;??C TR?NG THÁI HÀNG
-		IN			R19,			INPUT_PIN ;??C L?I TR?NG THÁI HÀNG
-		ANDI		R19,			0XF0 ;CHE 4 BIT CAO L?Y MÃ HÀNG
-		CPI			R19,			0XF0 ;XEM CÓ PHÍM NH?N?
-		BRNE		CHK_KEY ;R19 KHÁC F0H, CÓ PHÍM NH?N
-		LSL			R20 ;QUÉT C?T K? TI?P
+		IN			R19,			INPUT_PIN ;??C TR?NG THÃI HÃ€NG
+		IN			R19,			INPUT_PIN ;??C L?I TR?NG THÃI HÃ€NG
+		ANDI		R19,			0XF0 ;CHE 4 BIT CAO L?Y MÃƒ HÃ€NG
+		CPI			R19,			0XF0 ;XEM CÃ“ PHÃM NH?N?
+		BRNE		CHK_KEY ;R19 KHÃC F0H, CÃ“ PHÃM NH?N
+		LSL			R20 ;QUÃ‰T C?T K? TI?P
 		INC			R20 ;??T LSB=1
-		DEC			R17 ;GI?M S? L?N QUÉT C?T
-		BRNE		SCAN_COL ;TI?P T?C QUÉT H?T S? C?T
-		CLC					;PHÍM CH?A NH?N, C=0
-		RJMP		EXIT ;THOÁT
+		DEC			R17 ;GI?M S? L?N QUÃ‰T C?T
+		BRNE		SCAN_COL ;TI?P T?C QUÃ‰T H?T S? C?T
+		CLC					;PHÃM CH?A NH?N, C=0
+		RJMP		EXIT ;THOÃT
 CHK_KEY:
-		SUBI		R17,		4 ;TÍNH V? TRÍ C?T
-		NEG			R17 ;BÙ 2 L?Y S? D??NG
-		SWAP		R19 ;??O SANG 4 BIT TH?P MÃ HÀNG
-		LDI			R20,		4 ;R20 ??M S? L?N QUÉT HÀNG
+		SUBI		R17,		4 ;TÃNH V? TRÃ C?T
+		NEG			R17 ;BÃ™ 2 L?Y S? D??NG
+		SWAP		R19 ;??O SANG 4 BIT TH?P MÃƒ HÃ€NG
+		LDI			R20,		4 ;R20 ??M S? L?N QUÃ‰T HÃ€NG
 SCAN_ROW:
-		ROR			R19 ;QUAY PH?I QUA C TÌM BIT 0
-		BRCC		SET_FLG ;C=0 V? TRÍ HÀNG CÓ PHÍM NH?N
-		INC			R17 ;KHÔNG ?ÚNG HÀNG 
-						;T?NG V? TRÍ HÀNG THÊM 4
+		ROR			R19 ;QUAY PH?I QUA C TÃŒM BIT 0
+		BRCC		SET_FLG ;C=0 V? TRÃ HÃ€NG CÃ“ PHÃM NH?N
+		INC			R17 ;KHÃ”NG ?ÃšNG HÃ€NG 
+						;T?NG V? TRÃ HÃ€NG THÃŠM 4
 		INC			R17
 		INC			R17
 		INC			R17
 		DEC			R20
-		BRNE		SCAN_ROW ;QUÉT H?T 4 HÀNG
-		CLC ;KHÔNG CÓ PHÍM NH?N C=0
-		RJMP		EXIT ;THOÁT
+		BRNE		SCAN_ROW ;QUÃ‰T H?T 4 HÃ€NG
+		CLC ;KHÃ”NG CÃ“ PHÃM NH?N C=0
+		RJMP		EXIT ;THOÃT
 SET_FLG:
-		SEC ;CÓ PHÍM NH?N C=1
+		SEC ;CÃ“ PHÃM NH?N C=1
 EXIT: 
 		RET
