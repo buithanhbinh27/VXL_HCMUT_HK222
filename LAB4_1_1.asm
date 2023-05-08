@@ -2,7 +2,7 @@
 ; LAB4_1_1.asm
 ; 1KhZ -> N = 8 -> 1 CK = 8000 MC 
 .EQU	P_OUT	=0
-.EQU	TF		=-3995 ;TF=gi· tr? ??t tr??c
+.EQU	TF		=-3995 ;TF=gi√° tr? ??t tr??c
 
 .ORG	0
 RJMP	MAIN
